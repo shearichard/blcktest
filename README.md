@@ -1,7 +1,9 @@
 # blcktest
 ## Overview
 
-![My image](https://cloud.githubusercontent.com/assets/403435/5694814/65f7400c-99e0-11e4-8ad8-4f02f5ec8a52.png)
+Here is an example of the demo in action at version 0.1: 
+
+![My image](https://cloud.githubusercontent.com/assets/403435/5694991/902bb438-99eb-11e4-9983-4668f6f361fd.png)
 
 
 A testbed for using Blockly with the javascript games framework Quintus

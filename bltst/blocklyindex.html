@@ -6,14 +6,28 @@
    <body>
        <h1>Blockly Example </h1>
        <script>
+            //**********************************************************
+            //Initialise blockly
+            //**********************************************************
             function blocklyLoaded(blockly) {
                 // Called once Blockly is fully loaded.
                 window.Blockly = blockly;
             }
+            window.addEventListener("load",function() { // Wait for the window to finish loading
+                //**********************************************************
+                //Inject code into display area after every change
+                //**********************************************************
+                function myUpdateFunction() {
+                    var code = window.Blockly.JavaScript.workspaceToCode();
+                    document.getElementById('samplecodechunk').innerHTML = code;
+                }
+                Blockly.addChangeListener(myUpdateFunction);
+            });
+
         </script>
         <iframe src="blocklyframe.html"></iframe>
         <div id="samplecode">
-            <pre>
+            <pre id="samplecodechunk">
                     var div = document.getElementById("textDiv");
                     div.textContent = "my text";
                     var text = div.textContent;
