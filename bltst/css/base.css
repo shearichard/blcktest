@@ -5,8 +5,16 @@ body {
 }
 iframe {
   width: 100%;
-  height: 100%;
+  height: 50%;
   border-style: solid;
   border-color: #535353;
   border-width: 0 1px 1px 0;
+}
+#samplecode {
+    background-color: #4ba68a;
+    color: #FCFAFF;
+    border: 2px solid #33715e;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
