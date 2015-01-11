@@ -14,7 +14,7 @@
         height: 100%;
       }
       .blocklySvg {
-        height: 100%;
+        height: 50%;
         width: 100%;
       }
     </style>
@@ -28,13 +28,24 @@
   </head>
   <body onload="init()">
     <xml id="toolbox" style="display: none">
-      <block type="controls_if"></block>
-      <block type="controls_repeat_ext"></block>
-      <block type="logic_compare"></block>
-      <block type="math_number"></block>
-      <block type="math_arithmetic"></block>
-      <block type="text"></block>
-      <block type="text_print"></block>
+        <category name="Control">
+            <block type="controls_if"></block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_repeat_ext"></block>
+        </category>
+        <category name="Math/Logic">
+            <block type="logic_compare"></block>
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+        </category>
+        <category name="Control">
+            <block type="text"></block>
+            <block type="text_print"></block>
+        </category>
+        <category name="Data">
+            <category name="Variables" custom="VARIABLE"></category>
+            <category name="Functions" custom="PROCEDURE"></category>
+        </category>
     </xml>
   </body>
 </html>
