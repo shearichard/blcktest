@@ -6,24 +6,50 @@
    <body>
        <h1>Blockly Example </h1>
        <script>
+        //**********************************************************
+        //Initialise blockly
+        //**********************************************************
+        function blocklyLoaded(blockly) {
+            // Called once Blockly is fully loaded.
+            window.Blockly = blockly;
+        }
+        window.addEventListener("load",function() { // Wait for the window to finish loading
             //**********************************************************
-            //Initialise blockly
+            //Inject code into display area after every change
             //**********************************************************
-            function blocklyLoaded(blockly) {
-                // Called once Blockly is fully loaded.
-                window.Blockly = blockly;
+            function myUpdateFunction() {
+                var code = window.Blockly.JavaScript.workspaceToCode();
+                document.getElementById('samplecodechunk').innerHTML = code;
+                saveCodeState(code);
             }
-            window.addEventListener("load",function() { // Wait for the window to finish loading
-                //**********************************************************
-                //Inject code into display area after every change
-                //**********************************************************
-                function myUpdateFunction() {
-                    var code = window.Blockly.JavaScript.workspaceToCode();
-                    document.getElementById('samplecodechunk').innerHTML = code;
-                }
-                Blockly.addChangeListener(myUpdateFunction);
-            });
-
+            Blockly.addChangeListener(myUpdateFunction);
+        });
+        //**********************************************************
+        //test for local storage support
+        //**********************************************************
+        function supports_html5_storage() {
+            try {
+                return 'localStorage' in window && window['localStorage'] !== null;
+            } catch (e) {
+                return false;
+            }
+        }
+        //**********************************************************
+        //save js to local storage      
+        //**********************************************************
+        function saveCodeState(code) {
+            if (!supports_html5_storage()) { return false; }
+            localStorage["blcktest.code"] = code;
+            return true;
+        }
+        //**********************************************************
+        //retrieve js from local storage      
+        //**********************************************************
+        function retrieveCodeState(code) {
+            if (!supports_html5_storage()) { return false; }
+            code = localStorage["blcktest.code"];
+            return code;
+        }
         </script>
         <iframe src="blocklyframe.html"></iframe>
         <div id="samplecode">
