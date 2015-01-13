@@ -21,6 +21,8 @@
                 var code = window.Blockly.JavaScript.workspaceToCode();
                 document.getElementById('samplecodechunk').innerHTML = code;
                 saveCodeState(code);
+                var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
+                saveBlockState(Blockly.Xml.domToText(xml));
             }
             Blockly.addChangeListener(myUpdateFunction);
         });
@@ -49,6 +51,14 @@
             if (!supports_html5_storage()) { return false; }
             code = localStorage["blcktest.code"];
             return code;
+        }
+        //**********************************************************
+        //save blocks to local storage      
+        //**********************************************************
+        function saveBlockState(blocks) {
+            if (!supports_html5_storage()) { return false; }
+            localStorage["blcktest.blocks"] = blocks;
+            return true;
         }
         </script>
         <iframe src="blocklyframe.html"></iframe>
