@@ -12,6 +12,8 @@
         function blocklyLoaded(blockly) {
             // Called once Blockly is fully loaded.
             window.Blockly = blockly;
+            retrieveBlockState();
+            
         }
         window.addEventListener("load",function() { // Wait for the window to finish loading
             //**********************************************************
@@ -58,6 +60,15 @@
         function saveBlockState(blocks) {
             if (!supports_html5_storage()) { return false; }
             localStorage["blcktest.blocks"] = blocks;
+            return true;
+        }
+        //**********************************************************
+        //retrieve blocks from local storage      
+        //**********************************************************
+        function retrieveBlockState(){
+            if (!supports_html5_storage()) { return false; }
+            var xml = Blockly.Xml.textToDom(window.localStorage['blcktest.blocks']);
+            Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
             return true;
         }
         </script>
